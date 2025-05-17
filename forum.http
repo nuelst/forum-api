@@ -2,10 +2,28 @@ GET http://localhost:3000/forum/user
 
 ###
 
-POST http://localhost:3000/user
+POST http://localhost:3000/forum/user
 Content-Type: application/json
 
 {
   "name": "John Doe",
-  "email": "john.doe@example.com"
-} 
+  "password": "123456",
+  "email": "johndoe2@example.com"
+}
+
+###
+
+GET http://localhost:3000/forum/user/cmarhm4g90000dcgciw2yr4rr
+
+
+###
+
+PATCH http://localhost:3000/forum/user/cmarhm4g90000dcgciw2yr4rr
+Content-Type: application/json
+
+{
+  "name": "John Doe Updated"
+}
+
+###
+DELETE http://localhost:3000/forum/user/cmarhm4g90000dcgciw2yr4rr
