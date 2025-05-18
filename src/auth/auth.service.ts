@@ -4,26 +4,37 @@ import { Inject, Injectable, NotFoundException, UnauthorizedException } from '@n
 import { UserService } from 'src/user/user.service';
 
 
+import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { Prisma, User } from 'generated/prisma';
-
+import { Prisma } from 'generated/prisma';
 
 const SALT_OR_ROUNDS = 10;
 
+type AuthResponse = {
+  access_token: string
+}
 @Injectable()
 export class AuthService {
 
   // constructor(private readonly usersService: UserService) { }
   @Inject()
   private readonly usersService: UserService
-  async signIn(params: Prisma.UserCreateInput): Promise<Omit<User, 'password'>> {
-    const user = await this.usersService.user({ email: params.email });
-    if (!user) throw new NotFoundException("User not found!");
-    const passwordMatch = await bcrypt.compare(params.password, user.password)
+  @Inject()
+  private readonly jwtService: JwtService
+
+  async signIn(params: Prisma.UserCreateInput): Promise<AuthResponse> {
+    const existingUser = await this.usersService.user({ email: params.email });
+    if (!existingUser) throw new NotFoundException("User not found!");
+    const passwordMatch = await bcrypt.compare(params.password, existingUser.password)
     if (!passwordMatch) throw new UnauthorizedException("Invalid Credentials")
 
-    const { password, ...result } = user
-    return result
+    const { password, ...user } = existingUser
+
+    const payload = { sub: user.id };
+    return {
+      access_token: await this.jwtService.signAsync(payload),
+    };
+    // return result
   }
   // create(createAuthDto: CreateAuthDto) {
   //   return 'This action adds a new auth';
