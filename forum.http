@@ -27,3 +27,14 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/forum/user/cmarhm4g90000dcgciw2yr4rr
+
+###
+
+POST http://localhost:3000/forum/auth/login
+Content-Type: application/json
+
+{
+ 
+  "password": "123456",
+  "email": "johndoe2@example.com"
+}
