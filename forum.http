@@ -38,3 +38,9 @@ Content-Type: application/json
   "password": "123456",
   "email": "johndoe2@example.com"
 }
+
+
+###
+GET http://localhost:3000/forum/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3Njc4MDk0LCJleHAiOjE3NDc3NjQ0OTR9.PXZra69vgPn26nJhExg-Rc7b69RKm7PaXkSjGPTuV2o
