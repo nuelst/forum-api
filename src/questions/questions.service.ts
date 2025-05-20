@@ -7,8 +7,9 @@ import { UpdateQuestionDto } from './dto/update-question.dto';
 export class QuestionsService {
   @Inject()
   private readonly prisma: PrismaService
-  async create(createQuestionDto: CreateQuestionDto) {
-    const userId = "dskln"
+  async create(createQuestionDto: CreateQuestionDto, userId: string) {
+    console.log("user id:", userId)
+
     return await this.prisma.question.create({
       data: { ...createQuestionDto, userId }
 
