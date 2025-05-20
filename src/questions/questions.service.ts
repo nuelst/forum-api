@@ -20,7 +20,18 @@ export class QuestionsService {
   }
 
   async findOne(id: string) {
-    return await this.prisma.question.findUnique({ where: { id: id } })
+    return await this.prisma.question.findUnique({
+      where: { id: id },
+      include: {
+        Answer: true,
+        User: {
+          select: {
+            name: true
+          }
+        }
+      }
+    }
+    )
   }
 
   async update(id: string, updateQuestionDto: UpdateQuestionDto) {

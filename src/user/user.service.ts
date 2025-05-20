@@ -59,6 +59,7 @@ export class UserService {
     return this.prisma.user.update({
       data,
       where,
+
     });
   }
 
