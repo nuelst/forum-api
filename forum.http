@@ -7,8 +7,8 @@ Content-Type: application/json
 
 {
   "name": "John Doe",
-  "password": "123456",
-  "email": "johndoe2@example.com"
+  "password": "Pw12345!",
+  "email": "jd3000@example.com"
 }
 
 ###
@@ -20,13 +20,18 @@ GET http://localhost:3000/forum/user/cmarhm4g90000dcgciw2yr4rr
 
 PATCH http://localhost:3000/forum/user/cmarhm4g90000dcgciw2yr4rr
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+
 
 {
   "name": "John Doe Updated"
 }
 
 ###
-DELETE http://localhost:3000/forum/user/cmarhm4g90000dcgciw2yr4rr
+DELETE http://localhost:3000/forum/user/cmawwewy20001dcws5a6vd09q
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+
 
 ###
 
@@ -43,4 +48,48 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/forum/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3Njc4MDk0LCJleHAiOjE3NDc3NjQ0OTR9.PXZra69vgPn26nJhExg-Rc7b69RKm7PaXkSjGPTuV2o
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+
+
+###
+POST http://localhost:3000/forum/questions
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+
+{
+ 
+  "title": "What's JWT?",
+  "description": "I'm building a api"
+}
+
+
+###
+
+GET http://localhost:3000/forum/questions/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+
+
+
+###
+
+GET http://localhost:3000/forum/questions/cmawwui9k0001dcq6kdq014vh
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+
+
+###
+GET  http://localhost:3000/forum/questions
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+
+
+###
+POST http://localhost:3000/forum/answers/cmawwui9k0001dcq6kdq014vh
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+
+{
+ 
+  "description": "i do not know"
+}

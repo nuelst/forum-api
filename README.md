@@ -1,98 +1,119 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Forum API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A RESTful API for a forum application built with NestJS, PostgreSQL, and Prisma ORM.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Features
 
-## Description
+- User authentication and authorization
+- Question management (create, read, update, delete)
+- Answer management (create, read, update, delete)
+- PostgreSQL database with Prisma ORM
+- Docker support for easy development and deployment
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Prerequisites
 
-## Project setup
+- Node.js (v18 or higher)
+- pnpm (package manager)
+- Docker and Docker Compose (for containerized development)
 
+## Getting Started
+
+### Environment Setup
+
+1. Clone the repository:
 ```bash
-$ pnpm install
+git clone <repository-url>
+cd forum-api
 ```
 
-## Compile and run the project
-
+2. Install dependencies:
 ```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
+pnpm install
 ```
 
-## Run tests
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
+3. Create a `.env` file in the root directory with the following variables:
+```env
+DATABASE_URL="postgresql://forum_user:forum_password@localhost:5432/forum_db?schema=public"
+JWT_SECRET="your-secret-key"
 ```
 
-## Deployment
+### Running with Docker
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
+1. Start the PostgreSQL database:
 ```bash
-$ pnpm install -g @nestjs/mau
-$ mau deploy
+docker compose up -d
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+2. Generate Prisma client:
+```bash
+pnpm prisma generate
+```
 
-## Resources
+3. Run database migrations:
+```bash
+pnpm prisma migrate dev
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+4. Start the development server:
+```bash
+pnpm start:dev
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+The API will be available at `http://localhost:3000`
 
-## Support
+### Running without Docker
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+1. Make sure you have PostgreSQL installed and running
+2. Create a database named `forum_db`
+3. Create a user `forum_user` with password `forum_password`
+4. Follow steps 2-4 from the Docker section
 
-## Stay in touch
+## Available Scripts
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- `pnpm start:dev` - Start development server with hot-reload
+- `pnpm build` - Build the application
+- `pnpm start:prod` - Start production server
+- `pnpm test` - Run tests
+- `pnpm test:e2e` - Run end-to-end tests
+- `pnpm lint` - Run linter
+- `pnpm format` - Format code with Prettier
+
+## API Documentation
+
+The API documentation is available in the `forum.http` file, which can be used with VS Code's REST Client extension or similar tools.
+
+### Main Endpoints
+
+- `POST /auth/register` - Register a new user
+- `POST /auth/login` - Login user
+- `GET /questions` - List all questions
+- `POST /questions` - Create a new question
+- `GET /questions/:id` - Get a specific question
+- `PUT /questions/:id` - Update a question
+- `DELETE /questions/:id` - Delete a question
+- `POST /questions/:id/answers` - Add an answer to a question
+- `GET /questions/:id/answers` - Get all answers for a question
+
+## Database Schema
+
+The application uses the following main models:
+
+- User: Stores user information
+- Question: Stores forum questions
+- Answer: Stores answers to questions
+
+## Development
+
+### Prisma Commands
+
+- `pnpm prisma generate` - Generate Prisma Client
+- `pnpm prisma migrate dev` - Create and apply migrations
+- `pnpm prisma studio` - Open Prisma Studio to view/edit database
+
+### Code Style
+
+The project uses ESLint and Prettier for code formatting. Run `pnpm format` to format your code before committing.
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+This project is private and unlicensed.

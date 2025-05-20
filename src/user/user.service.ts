@@ -47,7 +47,7 @@ export class UserService {
     const newUser = await this.prisma.user.create({
       data: { ...data, password: hash },
     });
-    console.log('newUser', newUser);
+
     return newUser;
   }
 
@@ -59,6 +59,7 @@ export class UserService {
     return this.prisma.user.update({
       data,
       where,
+
     });
   }
 

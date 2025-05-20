@@ -9,9 +9,10 @@ export class AnswersController {
   constructor(private readonly answersService: AnswersService) { }
 
   @UseGuards(AuthGuard)
-  @Post()
-  create(@Body() createAnswerDto: CreateAnswerDto, @Request() req) {
-    return this.answersService.create(createAnswerDto, req.sub);
+  @Post(":questionId")
+  create(@Body() createAnswerDto: CreateAnswerDto, @Request() req, @Param() params) {
+    const { sub: userId } = req.sub
+    return this.answersService.create(createAnswerDto, userId, params.questionId);
   }
 
   @UseGuards(AuthGuard)
@@ -22,17 +23,17 @@ export class AnswersController {
   @UseGuards(AuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.answersService.findOne(+id);
+    return this.answersService.findOne(id);
   }
   @UseGuards(AuthGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAnswerDto: UpdateAnswerDto) {
-    return this.answersService.update(+id, updateAnswerDto);
+    return this.answersService.update(id, updateAnswerDto);
   }
 
   @UseGuards(AuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.answersService.remove(+id);
+    return this.answersService.remove(id);
   }
 }
