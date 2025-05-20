@@ -7,8 +7,10 @@ import { UpdateAnswerDto } from './dto/update-answer.dto';
 export class AnswersService {
   constructor(private readonly prisma: PrismaService) { }
   async create(createAnswerDto: CreateAnswerDto, userId: string, questionId) {
-    return this.prisma.answer.create({
-      data: { ...createAnswerDto, userId, questionId }
+
+
+    return await this.prisma.answer.create({
+      data: { ...createAnswerDto, questionId, userId }
 
     })
   }
@@ -18,18 +20,25 @@ export class AnswersService {
   }
 
   async findOne(id: string) {
-    return this.prisma.question.findUnique({
+    return await this.prisma.question.findUnique({
       where: {
         id: id
       }
     })
   }
 
-  async update(id: number, updateAnswerDto: UpdateAnswerDto) {
-    return `This action updates a #${id} answer`;
+  async update(id: string, updateAnswerDto: UpdateAnswerDto) {
+    return await this.prisma.question.update({
+      where: {
+        id: id
+      },
+      data: updateAnswerDto
+    })
   }
 
-  async remove(id: number) {
-    return `This action removes a #${id} answer`;
+  async remove(id: string) {
+    return this.prisma.question.delete({
+      where: { id: id }
+    })
   }
 }
