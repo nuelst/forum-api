@@ -1,8 +1,14 @@
-GET http://localhost:3000/forum/user
+@baseUrl = http://localhost:3000/forum
+@token = put your token here
+@userId = cmarhm4g90000dcgciw2yr4rr
+@questionId = cmawwui9k0001dcq6kdq014vh
+@answerId = cmawwui9k0001dcq6kdq014vh
+
+GET {{baseUrl}}/user
 
 ###
 
-POST http://localhost:3000/forum/user
+POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
@@ -13,14 +19,14 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/forum/user/cmarhm4g90000dcgciw2yr4rr
+GET {{baseUrl}}/user/{{userId}}
 
 
 ###
 
-PATCH http://localhost:3000/forum/user/cmarhm4g90000dcgciw2yr4rr
+PATCH {{baseUrl}}/user/{{userId}}
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+Authorization: Bearer {{token}}
 
 
 {
@@ -28,14 +34,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6O
 }
 
 ###
-DELETE http://localhost:3000/forum/user/cmawwewy20001dcws5a6vd09q
+DELETE {{baseUrl}}/user/{{userId}}
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+Authorization: Bearer {{token}}
 
 
 ###
 
-POST http://localhost:3000/forum/auth/login
+POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
@@ -46,15 +52,15 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:3000/forum/user
+GET {{baseUrl}}/user
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+Authorization: Bearer {{token}}
 
 
 ###
-POST http://localhost:3000/forum/questions
+POST {{baseUrl}}/questions
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+Authorization: Bearer {{token}}
 
 {
  
@@ -67,27 +73,27 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6O
 
 GET http://localhost:3000/forum/questions/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+Authorization: Bearer {{token}}
 
 
 
 ###
 
-GET http://localhost:3000/forum/questions/cmawwui9k0001dcq6kdq014vh
+GET {{baseUrl}}/questions/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+Authorization: Bearer {{token}}
 
 
 ###
-GET  http://localhost:3000/forum/questions
+GET  {{baseUrl}}/questions
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+Authorization: Bearer {{token}}
 
 
 ###
-POST http://localhost:3000/forum/answers/cmawwui9k0001dcq6kdq014vh
+POST {{baseUrl}}/answers/{{answerId}}
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbWFyaHR6OWcwMDAwZGNld3JuODNueHkyIiwiaWF0IjoxNzQ3NzY4NzUxLCJleHAiOjE3NDc4NTUxNTF9.2FOrdoL78EW19iL1PiaXV_X3PAaQx4zVRVQ5ezO4dAU
+Authorization: Bearer {{token}}
 
 {
  
